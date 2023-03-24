@@ -11,6 +11,7 @@ function TodoForm({ addTodo }) {
   // Adds a new todo to the list when the enter key is pressed and the input field is not empty, and resets the value of the input field.
   const handleNewTodoKeyDown = (event) => {
     if (event.key === "Enter" && newTodo) {
+      event.preventDefault(); // prevent default form submission behavior
       addTodo(newTodo);
       setNewTodo("");
     }
