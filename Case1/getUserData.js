@@ -2,36 +2,17 @@ import axios from "axios";
 
 // An async function that takes a single parameter userId
 async function getUserData(userId) {
-  function createPromiseWithText(text, delay) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        console.log(text);
-        resolve();
-      }, delay);
-    });
-  }
+  // Use Promise.all to make concurrent requests to the JSONPlaceholder API for user and post data
+  const [userData, postsData] = await Promise.all([
+    axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`),
+    axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`),
+  ]);
 
-  function printTexts() {
-    axios
-      .get(`https://jsonplaceholder.typicode.com/users/${99}`)
-      .then((result1) => {
-        console.log(result1.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    axios
-      .get(`https://jsonplaceholder.typicode.com/users/${2}`)
-      .then((result2) => {
-        console.log(result2.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  printTexts();
+  // Spread the returned user and post data into a single object and return it
+  return {
+    ...userData.data,
+    posts: postsData.data,
+  };
 }
 
 export default getUserData;
