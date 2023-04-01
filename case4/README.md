@@ -1,18 +1,12 @@
-Emoji Search
----
+# Patika Cases
 
-Created with *create-react-app*. See the [full create-react-app guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+- www.patika.dev
 
+## `npm start`
 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Install
----
+## `yarn test`
 
-`npm install`
-
-
-
-Usage
----
-
-`npm start`
+Runs the test files in the project
